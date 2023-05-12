@@ -185,11 +185,11 @@
                 <tr>          
                      <!-- affichage des données des influenceurs -->
                    <td><?php echo "<img class='user-image' src='uploaded_img/". $ligne['image']  . "' alt='User image'>";?></td>
-                   <td><?php echo $ligne['name'] ?></td>
-                   <td><?php echo $ligne['age'] ?></td>
-                   <td><?php echo $ligne['insta'] ?></td>
-                   <td><?php echo $ligne['fc'] ?></td>
-                   <td><?php echo $ligne['email'] ?></td>
+                   <td><?= $ligne['name'] ?></td>
+                   <td><?= $ligne['age'] ?></td>
+                   <td><?= $ligne['insta'] ?></td>
+                   <td><?= $ligne['fc'] ?></td>
+                   <td><?= $ligne['email'] ?></td>
                    <td> 
                           <form method="post" action="">
                             <input type="hidden" name="id" value="<?php echo $ligne['id'] ?>">
@@ -207,9 +207,12 @@
                   $result = mysqli_query($conn,$requete);
                   if(!$result){
                   echo 'erreur'. mysqli_error();
-                 }else{ header("location: dash_admin.php"); 
-                  //rediriger vers la page d'affichage de données après la suppression 
-                }}?></tr>
+                 }
+                      //rediriger vers la page d'affichage de données après la suppression
+                      else
+                          header("location: dash_admin.php"); 
+                  }?>
+                 </tr>
              </div>
                 
              <!-- section pour afficher les détails des marques inscrits sur la plateforme -->
@@ -239,10 +242,10 @@
                  <?php while($ligne = mysqli_fetch_array($result) ){?>
                <tr>
                 <td> <?php echo "<img class='user-image' src='uploaded_img/" . $ligne['image']  . "' alt='User image'>";?></td>
-                <td><?php echo $ligne['name'] ?></td>
-                <td><?php echo $ligne['email'] ?></td>
-                <td><?php echo $ligne['SECTEUR'] ?></td>
-                <td><?php echo $ligne['chiffre'] ?></td>
+                <td><?= $ligne['name'] ?></td>
+                <td><?= $ligne['email'] ?></td>
+                <td><?= $ligne['SECTEUR'] ?></td>
+                <td><?= $ligne['chiffre'] ?></td>
                 <td> 
                     <form method="post" action="">
                         <!-- Crée un formulaire HTML avec la méthode POST et l'action vide (pour envoyer les données au même fichier)-->
@@ -291,11 +294,11 @@
                           <!-- la fonction mysqli_fetch_array() pour extraire chaque ligne de la table et stocker ses valeurs dans la variable $ligne. -->
                          <?php while($ligne = mysqli_fetch_array($result) ){?>               
                           <tr>
-                             <td><?php echo $ligne['name1'] ?></td>
-                             <td><?php echo $ligne['name2'] ?></td>
-                             <td><?php echo $ligne['SERVICE'] ?></td>
-                             <td><?php echo $ligne['date'] ?></td>
-                             <td><?php echo $ligne['PRIX'] ?></td>                            
+                             <td><?= $ligne['name1'] ?></td>
+                             <td><?= $ligne['name2'] ?></td>
+                             <td><?= $ligne['SERVICE'] ?></td>
+                             <td><?= $ligne['date'] ?></td>
+                             <td><?= $ligne['PRIX'] ?></td>                            
                           </tr>
                          <?php }?>
                           </table>           
@@ -321,9 +324,9 @@
                          </tr>
                          <?php while($ligne = mysqli_fetch_array($result) ){?>                     
                           <tr>
-                             <td><?php echo $ligne['name'] ?></td>
-                             <td><?php echo $ligne['email'] ?></td>
-                             <td><?php echo $ligne['msg'] ?></td></tr>                                                       
+                             <td><?= $ligne['name'] ?></td>
+                             <td><?= $ligne['email'] ?></td>
+                             <td><?= $ligne['msg'] ?></td></tr>                                                       
                          <?php }?>
                      </table>               
               </div>
